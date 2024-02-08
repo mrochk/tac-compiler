@@ -1,0 +1,61 @@
+const a:integer = 100;
+var result:integer;
+
+integer mult(a:integer, b:integer) {
+    var result:integer;
+
+    result = 0;
+
+    while (a > 0) {
+        a = a - 1;
+        result = result + b;
+    }
+
+    return (result);
+}
+
+integer div(a:integer, b:integer) {
+    var result:integer;
+
+    result = 0;
+
+    a = a - b;
+
+    while (a >= 0) {
+        a = a - b;
+        result = result + 1;
+    }
+
+    return (result);
+}
+
+integer mod(a:integer, b:integer) {
+    var result:integer;
+    var q:integer;
+    var m:integer;
+
+    q = div(a, b);
+    m = mult(q, b);
+    result = a - m;
+
+    return (result);
+}
+
+integer gcd(a:integer, b:integer) {
+    var r:integer;
+
+    while (b > 0) {
+        r = mod(a, b);
+        a = b;
+        b = r;
+    }
+
+    return (a);
+}
+
+main {
+    const b:integer = 88;
+    // One argument comes from the scope of the main function,
+    // the other from the global scope.
+    result = gcd(a, b);
+}
